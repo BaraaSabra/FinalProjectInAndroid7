@@ -16,10 +16,8 @@
     <string name="TheScendLevel" translatable="false">The Scend Level</string>
     <string name="TheThirdLevel" translatable="false">The Third Level</string>
     <string name="PROFILE" translatable="false">PROFILE</string>
-
-
-
-
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
