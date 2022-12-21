@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SeetingActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="178dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/SETTING"
+        android:textAllCaps="true"
+        android:textColor="#03A9F4"
+        android:textSize="29sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="49dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="92dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:srcCompat="@drawable/musical2" />
+
+    <Switch
+        android:id="@+id/switch_Music"
+        android:layout_width="233dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="72dp"
+        android:width="20dp"
+        android:height="20dp"
+        android:checked="true"
+        android:drawablePadding="@dimen/cardview_compat_inset_shadow"
+        android:showText="true"
+        android:text="@string/Music"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:textSize="25sp"
+        android:thumb="@drawable/switc"
+        android:track="@drawable/track"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.386"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:checked="true" />
+
+    <Switch
+        android:id="@+id/switch_notifcation"
+        android:layout_width="233dp"
+        android:layout_height="81dp"
+        android:layout_marginTop="68dp"
+        android:width="20dp"
+        android:height="20dp"
+        android:checked="true"
+        android:drawablePadding="@dimen/cardview_compat_inset_shadow"
+        android:showText="true"
+        android:text="@string/Notification"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:textSize="25sp"
+        android:thumb="@drawable/switc"
+        android:track="@drawable/track"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.38"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/switch_Music"
+        tools:checked="true" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="50dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="84dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4"
+        app:srcCompat="@drawable/ic_baseline_notifications_active_24" />
+
+    <Button
+        android:id="@+id/btn_again"
+        android:layout_width="259dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="104dp"
+        android:layout_marginEnd="76dp"
+        android:backgroundTint="#D08BDC"
+        android:text="@string/Startplayeagiain"
+        android:textAllCaps="false"
+        android:textColor="#0C0C0C"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switch_notifcation" />
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="45dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="52dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

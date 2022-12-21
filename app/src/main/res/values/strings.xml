@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">FinalProjectInAndroid</string>
+    <string name="START" translatable="false">START</string>
+    <string name="Langueg" translatable="false">Langueg</string>
+    <string name="SETTING" translatable="false">SETTING</string>
+    <string name="Music" translatable="false">Music</string>
+    <string name="Notification" translatable="false">Notification</string>
+    <string name="Startplayeagiain" translatable="false">Start playe agiain</string>
+    <string name="Name" translatable="false">Name</string>
+    <string name="Email" translatable="false">Email</string>
+    <string name="BittheDate" translatable="false">Bitthe Date</string>
+    <string name="Country" translatable="false">Country</string>
+    <string name="Male" translatable="false">Male</string>
+    <string name="Female" translatable="false">Female</string>
+    <string name="TheFirestLevel" translatable="false">The Firest Level</string>
+    <string name="TheScendLevel" translatable="false">The Scend Level</string>
+    <string name="TheThirdLevel" translatable="false">The Third Level</string>
+    <string name="PROFILE" translatable="false">PROFILE</string>
+
+
+
+
+
+
+</resources>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FinalProjectInAndroid</string>
+    <string name="START" translatable="false">ابدا</string>
+    <string name="Langueg" translatable="false">اللغه</string>
+    <string name="SETTING" translatable="false">الاعدادات</string>
+    <string name="Music" translatable="false">الموسيقى</string>
+    <string name="Notification" translatable="false">الاشعارات</string>
+    <string name="Startplayeagiain" translatable="false">اعاده اللعب من جديد</string>
+    <string name="Name" translatable="false">الاسم</string>
+    <string name="Email" translatable="false">الايميل</string>
+    <string name="BittheDate" translatable="false">تاريخ الميلاد</string>
+    <string name="Country" translatable="false">الدوله</string>
+    <string name="Male" translatable="false">ذكر</string>
+    <string name="Female" translatable="false">أنثى</string>
+    <string name="TheFirestLevel" translatable="false">المرحله الاولى</string>
+    <string name="TheScendLevel" translatable="false">المرحله الثانيه</string>
+    <string name="TheThirdLevel" translatable="false">المرحله الثالثه</string>
+    <string name="PROFILE" translatable="false">الملف الشخصى</string>
+
+</resources>
