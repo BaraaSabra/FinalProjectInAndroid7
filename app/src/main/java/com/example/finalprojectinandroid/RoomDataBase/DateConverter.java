@@ -6,7 +6,6 @@ import java.sql.Date;
 
 public class DateConverter {
     @TypeConverter
-
     public long getLong(Date data){
         return  data.getTime();
     }

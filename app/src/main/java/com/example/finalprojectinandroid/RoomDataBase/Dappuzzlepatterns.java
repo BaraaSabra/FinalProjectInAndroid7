@@ -9,19 +9,21 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import java.util.List;
+
 @Dao
-public interface DaoUsers {
+public  interface Dappuzzlepatterns {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertUsers(Users users);
+    void insertpuzzlepatterns(puzzlepatterns puzzlepatterns);
+
 
     @Update
-    void updateUsers(Users users);
+    void updatepuzzlepatterns(puzzlepatterns puzzlepatterns);
+
 
     @Delete
-    void deleteUsers(Users users);
+    void deletpuzzlepatterns(puzzlepatterns puzzlepatterns);
 
-
-    @Query("select * from Users ORDER BY id DESC ")
-    LiveData<List<Users>> getAllUser();
+    @Query("select * from puzzlepatterns ORDER BY pattern_id DESC")
+    LiveData<List<puzzlepatterns>> getallpuzzlepatterns();
 }

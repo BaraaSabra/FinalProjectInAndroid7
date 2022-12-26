@@ -44,7 +44,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_numberoflevel" />
 
     <TextView
-        android:id="@+id/tv_numberoflevel4"
+        android:id="@+id/tv_point"
         android:layout_width="137dp"
         android:layout_height="50dp"
         android:layout_marginStart="216dp"
