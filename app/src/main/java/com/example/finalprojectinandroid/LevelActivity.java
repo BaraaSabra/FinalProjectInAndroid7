@@ -1,9 +1,17 @@
 package com.example.finalprojectinandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
+import com.example.finalprojectinandroid.RoomDataBase.Level;
+import com.example.finalprojectinandroid.RoomDataBase.LevelAdapter;
+import com.example.finalprojectinandroid.RoomDataBase.ViewModel;
+import com.example.finalprojectinandroid.RoomDataBase.puzzlepatterns;
 import com.example.finalprojectinandroid.databinding.ActivityLevelBinding;
 
 import org.json.JSONArray;
@@ -13,6 +21,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 public class LevelActivity extends AppCompatActivity {
     ActivityLevelBinding binding;
@@ -22,6 +31,31 @@ public class LevelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityLevelBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+
+
+
+        //                myViewModel= new ViewModelProvider(this).get(MyViewModel.class);
+//                parseJson();
+//
+//                myViewModel.getAllLevel().observe(this, new Observer<List<Level>>() {
+//                    @Override
+//                    public void onChanged(List<Level> levels) {
+//
+//                        LevelAdapter levelAdapter = new LevelAdapter((ArrayList<Level>) levels, PlayingStart.this, new OnClickItem() {
+//                            @Override
+//                            public void onclick(int levelnum) {
+//                                Puzzle puzzle=new Puzzle();
+//                                puzzle.setNum_level(levelnum);
+//                                int puzzle_num_level=      puzzle.getNum_level();
+//                                if (levelnum==puzzle_num_level){
+//                                    Intent intent=new Intent(PlayingStart.this,LevelActivity.class);
+//                                    intent.putExtra("level_num",levelnum);
+//                                    startActivity(intent);
+//                                }
+//                            }
+//                        });
 
      parsejsonFromAssest();
     }
@@ -37,6 +71,8 @@ public class LevelActivity extends AppCompatActivity {
                int num_level=jsonObject.getInt("level_no");
                int unlock_points=jsonObject.getInt("unlock_points");
                Level level=new Level(num_level,unlock_points);
+                ViewModel viewModel=new ViewModel(getApplication());
+                viewModel.insertLevle(level);
 
                JSONArray questionsjsonArray=jsonObject.getJSONArray("questions");
                ArrayList questionarrayList=new ArrayList();
@@ -54,10 +90,23 @@ public class LevelActivity extends AppCompatActivity {
                     JSONObject patternjsonobject=questionjesonobject.getJSONObject("pattern");
                     int pattern_id=patternjsonobject.getInt("pattern_id");
                     String pattern_name=patternjsonobject.getString("pattern_name");
-                    Pattern pattern=new Pattern(pattern_id,pattern_name);
+                    puzzlepatterns pattern=new puzzlepatterns(pattern_id,pattern_name);
 
                 }
 
+
+                 viewModel=new ViewModelProvider(this).get(ViewModel.class);
+
+                viewModel.getLevel().observe(this, new Observer<List<Level>>() {
+                    @Override
+                    public void onChanged(List<Level> levels) {
+                        LevelAdapter adapter = new LevelAdapter(levelArrayList, getBaseContext());
+                        binding.RV.setAdapter(adapter);
+                        binding.RV.setLayoutManager(new LinearLayoutManager(LevelActivity.this,
+                                RecyclerView.VERTICAL, false));
+
+                    }
+                });
 
 
 

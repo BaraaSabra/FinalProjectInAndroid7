@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -21,13 +22,25 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding binding;
     Animation BtnStartAn;
+    Boolean isplaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        musec();
+
+
+
+
+
         ladlocale();
+
+
+
+
         ActionBar actionBar=getSupportActionBar();
         actionBar.setTitle(getResources().getString(R.string.app_name));
 
@@ -60,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        
+
         binding.btnLangueg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,6 +82,17 @@ public class HomeActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void musec() {
+        Intent intent = new Intent(getBaseContext(), MyService.class);
+        if (!isplaying) {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                startForegroundService(intent);
+
+            }
+        }
     }
 
     private void ShowChengeLanguageDialog() {
@@ -103,11 +127,14 @@ public class HomeActivity extends AppCompatActivity {
         editor.apply();
 
     }
-    public void ladlocale(){
+    private void ladlocale(){
         SharedPreferences sharedPreferences=getSharedPreferences("Setting", Activity.MODE_PRIVATE);
         String language=sharedPreferences.getString("My_Lang","");
         setLocale(language);
     }
+
+
+
 
 
 }

@@ -9,23 +9,25 @@ import java.sql.Date;
 @TypeConverters({DateConverter.class})
 @Entity
 public class Users {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     int id;
     String name;
     String email;
-    Date date;
+    Date BirtheDate;
     String gender;
     String country;
 
 
-    public Users(String name, String email, Date date, String gender, String country) {
+    public Users(String name, String email, Date BirtheDate, String gender, String country) {
         this.name = name;
         this.email = email;
-        this.date = date;
+        this.BirtheDate = BirtheDate;
         this.gender = gender;
         this.country = country;
     }
 
+    public Users() {
+    }
 
     public int getId() {
         return id;
@@ -52,11 +54,11 @@ public class Users {
     }
 
     public Date getDate() {
-        return date;
+        return BirtheDate;
     }
 
     public void setDate(Date date) {
-        this.date = date;
+        this.BirtheDate = date;
     }
 
     public String getGender() {
@@ -79,7 +81,7 @@ public class Users {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.date = date;
+        this.BirtheDate = date;
         this.gender = gender;
         this.country = country;
     }

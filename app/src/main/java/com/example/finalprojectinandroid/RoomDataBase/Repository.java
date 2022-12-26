@@ -3,55 +3,199 @@ package com.example.finalprojectinandroid.RoomDataBase;
 import android.app.Application;
 
 import androidx.lifecycle.LiveData;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
 public class Repository {
     private DaoLevel DaoLevel;
-    private LiveData<List<Level>> Alllevel;
+
     private DaoUsers DaoUsers;
-    private LiveData<List<Users>> AllUsers;
+
+    private DaoPuzzleData DaoPuzzleData;
+    private  Dappuzzlepatterns Daopuzzlepatterns;
 
 
     Repository(Application application) {
         Roomdatabase db = Roomdatabase.getDatabase(application);
         DaoLevel = db.DaoLevel();
-        Alllevel = DaoLevel.getLevel();
         DaoUsers=db.DaoUser();
-        AllUsers=DaoUsers.getUser();
+        DaoPuzzleData=db.DauPuzzledata();
+        Daopuzzlepatterns=db.Daupuzzlepatterns();
+
     }
 
 
-    LiveData<List<Level>> getAlllevel() {
-        return Alllevel;
-    }
 
 
-    void insert(Level level) {
-        Roomdatabase.databaseWriteExecutor.execute(() -> {
-            DaoLevel.insert(level);
+
+
+
+    void deletLevle(Level level){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoLevel.delete(level);
+
+            }
         });
     }
-    LiveData<List<Users>> getAllUsers() {
-        return AllUsers;
-    }
-    void update(Level level){
-        Roomdatabase.databaseWriteExecutor.execute(() -> {
-            DaoLevel.insert(level);
+
+
+    void insertLevle(Level level){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoLevel.insert(level);
+
+            }
         });
     }
 
 
-    void insert(Users users) {
-        Roomdatabase.databaseWriteExecutor.execute(() -> {
-            DaoUsers.insert(users);
+    void updateLevle(Level level){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoLevel.update(level);
+
+            }
         });
     }
-    void update(Users users){
-        Roomdatabase.databaseWriteExecutor.execute(() -> {
-            DaoUsers.insert(users);
+
+    LiveData<List<Level>> getLevel(){
+       return DaoLevel.getLevel();
+    }
+
+
+    void insertDaoPuzzleData(PuzzleData puzzleData){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoPuzzleData.insertPuzzleData(puzzleData);
+
+            }
         });
     }
+
+
+
+    void updatePuzzleData(PuzzleData puzzleData){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoPuzzleData.updatePuzzleData(puzzleData);
+
+            }
+        });
+    }
+
+
+
+    void deletPuzzleData(PuzzleData puzzleData){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoPuzzleData.deletPuzzleData(puzzleData);
+
+            }
+        });
+    }
+
+
+    LiveData<List<PuzzleData>> getallpuzzeldata(){
+        return DaoPuzzleData.getallpuzzeldata();
+    }
+
+
+
+
+    LiveData<List<puzzlepatterns>> getpatter_id(int pattern_id ){
+        return DaoPuzzleData.getpatter_id(pattern_id);
+    }
+
+    void insertUsers(Users users){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoUsers.insertUsers(users);
+
+            }
+        });
+    }
+
+
+    void updateUsers(Users users){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoUsers.updateUsers(users);
+
+            }
+        });
+    }
+
+
+    void deleteUsers(Users users){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                DaoUsers.deleteUsers(users);
+
+            }
+        });
+    }
+
+
+
+    LiveData<List<Users>> getAllUser(){
+        return DaoUsers.getAllUser();
+
+    }
+
+    void insertpuzzlepatterns(puzzlepatterns puzzlepatterns){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Daopuzzlepatterns.insertpuzzlepatterns(puzzlepatterns);
+
+            }
+        });
+    }
+
+
+
+    void updatepuzzlepatterns(puzzlepatterns puzzlepatterns){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Daopuzzlepatterns.updatepuzzlepatterns(puzzlepatterns);
+
+            }
+        });
+    }
+
+
+
+    void deletpuzzlepatterns(puzzlepatterns puzzlepatterns){
+        Roomdatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                Daopuzzlepatterns.deletpuzzlepatterns(puzzlepatterns);
+
+            }
+        });
+    }
+
+
+    LiveData<List<puzzlepatterns>> getallpuzzlepatterns(){
+        return Daopuzzlepatterns.getallpuzzlepatterns();
+    }
+
+
 
 
 

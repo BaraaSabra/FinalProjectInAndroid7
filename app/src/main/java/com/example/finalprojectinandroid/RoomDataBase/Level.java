@@ -4,7 +4,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 @Entity
 public class Level {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     int levelnum;
     int required_points;
 

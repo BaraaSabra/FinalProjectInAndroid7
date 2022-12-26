@@ -1,9 +1,11 @@
 package com.example.finalprojectinandroid.RoomDataBase;
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity
 public class puzzlepatterns {
+    @PrimaryKey(autoGenerate = true)
     int  pattern_id;
     String pattern_name;
 
