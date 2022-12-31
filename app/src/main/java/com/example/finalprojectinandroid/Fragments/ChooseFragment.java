@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.finalprojectinandroid.R;
+import com.example.finalprojectinandroid.databinding.FragmentChooseBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -19,31 +20,37 @@ public class ChooseFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_QUESTION = "Question";
+    private static final String ARG_ANSWER1 = "answer1";
+    private static final String ARG_ANSWER2 = "answer2";
+    private static final String ARG_ANSWER3 = "answer3";
+    private static final String ARG_ANSWER4 = "answer4";
+    private static final String ARG_TREUEANSWER = "trueAnswer";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String Question;
+    private String answer1;
+    private String answer2;
+    private String answer3;
+    private String answer4;
+    private String trueAnswer;
 
     public ChooseFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ChooseFragment.
-     */
+
+
     // TODO: Rename and change types and number of parameters
-    public static ChooseFragment newInstance(String param1, String param2) {
+    public static ChooseFragment newInstance(String Question, String Answer1,String Answer2,String Answer3,String Answer4,String TrueAnswer) {
         ChooseFragment fragment = new ChooseFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_QUESTION, Question);
+        args.putString(ARG_ANSWER1, Answer1);
+        args.putString(ARG_ANSWER2, Answer2);
+        args.putString(ARG_ANSWER3, Answer3);
+        args.putString(ARG_ANSWER4, Answer4);
+        args.putString(ARG_TREUEANSWER, TrueAnswer);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,15 +59,26 @@ public class ChooseFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            Question = getArguments().getString(ARG_QUESTION);
+            answer1 = getArguments().getString(ARG_ANSWER1);
+            answer2 = getArguments().getString(ARG_ANSWER2);
+            answer3 = getArguments().getString(ARG_ANSWER3);
+            answer4 = getArguments().getString(ARG_ANSWER4);
+            trueAnswer = getArguments().getString(ARG_TREUEANSWER);
         }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        FragmentChooseBinding binding=FragmentChooseBinding.inflate(getLayoutInflater());
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_choose, container, false);
+        binding.Question.setText(Question);
+        binding.red1Answer1.setText(answer1);
+        binding.rabAnswer2.setText(answer2);
+        binding.answer3.setText(answer3);
+        binding.answer4.setText(answer4);
+
+        return binding.getRoot();
     }
 }

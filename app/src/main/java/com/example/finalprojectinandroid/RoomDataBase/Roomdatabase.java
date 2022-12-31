@@ -9,12 +9,15 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {PuzzleData.class,Users.class,Level.class,puzzlepatterns.class}, version = 2, exportSchema = false)
+@Database(entities = {PuzzleData.class, Users.class, Level.class, puzzlepatterns.class}, version = 4, exportSchema = false)
 public abstract class Roomdatabase extends RoomDatabase {
 
     public abstract DaoLevel DaoLevel();
+
     public abstract DaoUsers DaoUser();
+
     public abstract DaoPuzzleData DauPuzzledata();
+
     public abstract Dappuzzlepatterns Daupuzzlepatterns();
 
 
@@ -26,7 +29,7 @@ public abstract class Roomdatabase extends RoomDatabase {
     static Roomdatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (Roomdatabase.class) {
-                if (INSTANCE == null) {
+                if(INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                                     Roomdatabase.class, "PuzzleDatabase")
                             .fallbackToDestructiveMigration()

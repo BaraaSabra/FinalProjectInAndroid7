@@ -12,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface DaoLevel {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Level level);
 
     @Update
@@ -22,7 +22,7 @@ public interface DaoLevel {
     void delete(Level level);
 
 
-    @Query("select * from Level ORDER BY levelnum DESC ")
+    @Query("select * from Level ")
     LiveData<List<Level>> getLevel();
 
 }

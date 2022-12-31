@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/btn_firest"
-        android:layout_width="369dp"
-        android:layout_height="198dp"
+        android:layout_width="362dp"
+        android:layout_height="164dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/square"
         android:gravity="center"
@@ -20,13 +20,28 @@
 
     <TextView
         android:id="@+id/tv_numberoflevel"
-        android:layout_width="213dp"
-        android:layout_height="55dp"
+        android:layout_width="134dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="Level number"
         android:textColor="#090808"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_firest" />
+
+    <TextView
+        android:id="@+id/tv_numberoflevel3"
+        android:layout_width="195dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="Level number"
+        android:textColor="#090808"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_firest" />
 
@@ -34,7 +49,7 @@
         android:id="@+id/tv_numberoflevel2"
         android:layout_width="137dp"
         android:layout_height="50dp"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="Point"

@@ -5,11 +5,12 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 
-@Entity(foreignKeys= {@ForeignKey(entity = puzzlepatterns.class,
-        parentColumns = "pattern_id", childColumns = "pattern_id",
-        onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE), @ForeignKey(entity = Level.class,
+@Entity(foreignKeys= {@ForeignKey(entity = Level.class,
         parentColumns = "levelnum", childColumns = "levelnum",
         onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE)})
+//@ForeignKey(entity = puzzlepatterns.class,
+//        parentColumns = "pattern_id", childColumns = "pattern_id",
+//        onDelete = ForeignKey.CASCADE, onUpdate = ForeignKey.CASCADE
 
 public class PuzzleData {
     @PrimaryKey(autoGenerate = true)
@@ -25,6 +26,10 @@ public class PuzzleData {
     int pattern_id;
     String pattern_name;
     int levelnum;
+    String hint;
+
+    public PuzzleData() {
+    }
 
     public int getLevelnum() {
         return levelnum;
@@ -123,19 +128,20 @@ public class PuzzleData {
         this.duration = duration;
     }
 
-//    public PuzzleData(int puzzle_number, String puzzle_text, String answer_1, String answer_2, String answer_3, String answer_4, String true_answer, int points, int duration, int pattern_id, String pattern_name, int levelnum) {
-//        this.puzzle_number = puzzle_number;
-//        this.puzzle_text = puzzle_text;
-//        this.answer_1 = answer_1;
-//        this.answer_2 = answer_2;
-//        this.answer_3 = answer_3;
-//        this.answer_4 = answer_4;
-//        this.true_answer = true_answer;
-//        this.points = points;
-//        this.duration = duration;
-//        this.pattern_id = pattern_id;
-//        this.pattern_name = pattern_name;
-//        this.levelnum = levelnum;
-//    }
-//}
+    public PuzzleData(int puzzle_number, String puzzle_text, String answer_1, String answer_2, String answer_3, String answer_4, String true_answer, int points, int duration, String pattern_name, int levelnum,String hint,int pattern_id) {
+        this.puzzle_number = puzzle_number;
+        this.puzzle_text = puzzle_text;
+        this.answer_1 = answer_1;
+        this.answer_2 = answer_2;
+        this.answer_3 = answer_3;
+        this.answer_4 = answer_4;
+        this.true_answer = true_answer;
+        this.points = points;
+        this.duration = duration;
+        this.pattern_name = pattern_name;
+        this.levelnum = levelnum;
+        this.hint=hint;
+        this.pattern_id=pattern_id;
+    }
 }
+

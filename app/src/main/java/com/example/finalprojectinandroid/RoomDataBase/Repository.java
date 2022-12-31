@@ -113,9 +113,9 @@ public class Repository {
 
 
 
-    LiveData<List<puzzlepatterns>> getpatter_id(int pattern_id ){
-        return DaoPuzzleData.getpatter_id(pattern_id);
-    }
+//    LiveData<List<puzzlepatterns>> getpatter_id(int pattern_id ){
+//        return DaoPuzzleData.getpatter_id(pattern_id);
+//    }
 
     void insertUsers(Users users){
         Roomdatabase.databaseWriteExecutor.execute(new Runnable() {

@@ -12,7 +12,7 @@ import java.util.List;
 
 @Dao
 public interface DaoPuzzleData {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertPuzzleData(PuzzleData puzzleData);
 
 
@@ -23,13 +23,13 @@ public interface DaoPuzzleData {
     @Delete
     void deletPuzzleData(PuzzleData puzzleData);
 
-    @Query("select * from PuzzleData ORDER BY puzzle_number DESC")
+    @Query("select * from PuzzleData ORDER BY puzzle_number ")
     LiveData<List<PuzzleData>> getallpuzzeldata();
 
-
-    @Query("select * from puzzledata where pattern_id = :pattern_id")
-
-    LiveData<List<puzzlepatterns>> getpatter_id(int pattern_id );
+//
+//    @Query("select * from puzzledata where pattern_id = :pattern_id")
+//
+//    LiveData<List<puzzlepatterns>> getpatter_id(int pattern_id );
 
 
 }

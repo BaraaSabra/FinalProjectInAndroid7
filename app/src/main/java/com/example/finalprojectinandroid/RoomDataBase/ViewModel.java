@@ -61,9 +61,9 @@ public class ViewModel extends AndroidViewModel {
 
 
 
-    public  LiveData<List<puzzlepatterns>> getpatter_id(int pattern_id ){
-        return Repository.getpatter_id(pattern_id);
-    }
+//    public  LiveData<List<puzzlepatterns>> getpatter_id(int pattern_id ){
+//        return Repository.getpatter_id(pattern_id);
+//    }
 
     public void insertUsers(Users users){
         Repository.insertUsers(users);
@@ -105,6 +105,8 @@ public class ViewModel extends AndroidViewModel {
 
     public LiveData<List<puzzlepatterns>> getallpuzzlepatterns(){
         return Repository.getallpuzzlepatterns();
+
+
     }
 
 }

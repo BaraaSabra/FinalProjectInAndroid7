@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.IBinder;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 public class MyService extends Service {
     MediaPlayer player;
@@ -37,12 +38,12 @@ public class MyService extends Service {
         PendingIntent pi=PendingIntent.getActivity(MyService.this,0,intent1,0);
 
         NotificationCompat.Builder builder=new NotificationCompat.Builder(MyService.this,"chanl1");
-        builder.addAction(R.drawable.ic_launcher_foreground,"Action",pi);
-        builder.setSmallIcon(R.drawable.ic_launcher_background);
-        builder.setContentTitle("Notification");
-        builder.setContentText("Songe");
+//        builder.addAction(R.drawable.ic_launcher_foreground,"Action",pi);
+//        builder.setSmallIcon(R.drawable.ic_launcher_background);
+//        builder.setContentTitle("Notification");
+//        builder.setContentText("Songe");
 
-//        NotificationManagerCompat managerCompat=NotificationManagerCompat.from(MainActivity.this);
+        NotificationManagerCompat managerCompat=NotificationManagerCompat.from(getBaseContext());
 //        managerCompat.notify(1,builder.build());
         startForeground(1,builder.build());
         player.start();

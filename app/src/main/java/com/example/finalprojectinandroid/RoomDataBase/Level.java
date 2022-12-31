@@ -13,6 +13,9 @@ public class Level {
         this.required_points = required_points;
     }
 
+    public Level() {
+    }
+
     public int getLevelnum() {
         return levelnum;
     }

@@ -13,7 +13,7 @@ import java.util.List;
 @Dao
 public  interface Dappuzzlepatterns {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertpuzzlepatterns(puzzlepatterns puzzlepatterns);
 
 
@@ -24,6 +24,8 @@ public  interface Dappuzzlepatterns {
     @Delete
     void deletpuzzlepatterns(puzzlepatterns puzzlepatterns);
 
-    @Query("select * from puzzlepatterns ORDER BY pattern_id DESC")
+    @Query("select * from puzzlepatterns ORDER BY pattern_id ")
     LiveData<List<puzzlepatterns>> getallpuzzlepatterns();
+
+
 }
