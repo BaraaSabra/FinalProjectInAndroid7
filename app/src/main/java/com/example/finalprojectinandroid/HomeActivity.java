@@ -22,7 +22,6 @@ import java.util.Locale;
 public class HomeActivity extends AppCompatActivity {
     ActivityHomeBinding binding;
     Animation BtnStartAn;
-    Boolean isplaying = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +29,10 @@ public class HomeActivity extends AppCompatActivity {
         binding=ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        musec();
+        Intent intent = new Intent(this, MyService.class);
+
+
+        startService(intent);
 
 
 
@@ -84,16 +86,10 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void musec() {
-        Intent intent = new Intent(getBaseContext(), MyService.class);
-        if (!isplaying) {
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                startForegroundService(intent);
 
-            }
-        }
-    }
+
+
 
     private void ShowChengeLanguageDialog() {
         final  String [] listItems ={"English","Arabic"};

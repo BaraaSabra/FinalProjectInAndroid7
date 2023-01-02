@@ -11,9 +11,9 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginBottom="293dp"
         android:background="@drawable/question"
         android:orientation="vertical"
@@ -56,10 +56,20 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:hint="@string/Female"
-                android:text="fales"
+                android:text="false"
                 android:textColor="#9C27B0"
                 android:textSize="24sp" />
         </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_chick"
+            android:layout_width="250dp"
+            android:layout_height="61dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#CD6FDD"
+            android:text="Check your answer"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

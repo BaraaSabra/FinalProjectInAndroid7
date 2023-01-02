@@ -13,12 +13,12 @@ public class Users {
     int id;
     String name;
     String email;
-    Date BirtheDate;
+    String BirtheDate;
     String gender;
     String country;
 
 
-    public Users(String name, String email, Date BirtheDate, String gender, String country) {
+    public Users(String name, String email, String BirtheDate, String gender, String country) {
         this.name = name;
         this.email = email;
         this.BirtheDate = BirtheDate;
@@ -53,11 +53,11 @@ public class Users {
         this.email = email;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return BirtheDate;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.BirtheDate = date;
     }
 
@@ -77,7 +77,7 @@ public class Users {
         this.country = country;
     }
 
-    public Users(int id, String name, String email, Date date, String gender, String country) {
+    public Users(int id, String name, String email, String date, String gender, String country) {
         this.id = id;
         this.name = name;
         this.email = email;

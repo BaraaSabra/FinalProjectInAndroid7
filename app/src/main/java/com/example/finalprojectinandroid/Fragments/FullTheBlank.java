@@ -1,15 +1,15 @@
 package com.example.finalprojectinandroid.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
-import com.example.finalprojectinandroid.R;
 import com.example.finalprojectinandroid.databinding.FragmentFullTheBlankBinding;
 
 /**
@@ -22,7 +22,9 @@ public class FullTheBlank extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_QUESTION = "Question";
-    private static final String ARG_TRUEANSWER = "TrueAnswer";
+    private static final String ARG_TRUEANSWER = "trueAnswer";
+
+    OnAnswer answer;
 
     // TODO: Rename and change types of parameters
     private String Question;
@@ -32,6 +34,11 @@ public class FullTheBlank extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        answer = (OnAnswer) getContext();
+    }
 
     // TODO: Rename and change types and number of parameters
     public static FullTheBlank newInstance(String Question, String TrueAnswer) {
@@ -48,7 +55,7 @@ public class FullTheBlank extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             Question = getArguments().getString(ARG_QUESTION);
-            TrueAnswer = getArguments().getString(TrueAnswer);
+            TrueAnswer = getArguments().getString(ARG_TRUEANSWER);
         }
     }
 
@@ -56,11 +63,14 @@ public class FullTheBlank extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentFullTheBlankBinding binding=FragmentFullTheBlankBinding.inflate(getLayoutInflater());
+        FragmentFullTheBlankBinding binding = FragmentFullTheBlankBinding.inflate(getLayoutInflater());
         binding.Question1.setText(Question);
-        // Inflate the layout for this fragment
-
-
+        binding.btnChick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                answer.ChecktheAnswer(TrueAnswer,binding.Answer.getText().toString(),3);
+            }
+        });
 
 
         return binding.getRoot();

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -29,7 +30,8 @@ import java.util.List;
 
 public class LevelActivity extends AppCompatActivity {
     ActivityLevelBinding binding;
-
+    SharedPreferences sp= getSharedPreferences("Playe",MODE_PRIVATE) ;//الملف الافتراضي للمشروع باكمله
+    SharedPreferences.Editor edit=sp.edit();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,8 @@ public class LevelActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         parsejsonFromAssest();
+
+
 
 
         ViewModel viewModel = new ViewModelProvider(this).get(ViewModel.class);
@@ -80,11 +84,7 @@ public class LevelActivity extends AppCompatActivity {
             ViewModel viewModel = new ViewModelProvider(this).get(ViewModel.class);
 
             JSONArray jsonArray = new JSONArray(jsonStr);
-//            ArrayList arrayListplayer=new ArrayList();
-//            ArrayList<Level> levelArrayList=new ArrayList<>();
             for (int i = 0; i < jsonArray.length(); i++) {
-//                new JSONObject(questionsjsonArray.get(j).toString());
-//                JSONObject jsonObject=jsonArray.getJSONObject(i);
                 JSONObject jsonObject = new JSONObject(jsonArray.get(i).toString());
                 int num_level = jsonObject.getInt("level_no");
                 int unlock_points = jsonObject.getInt("unlock_points");

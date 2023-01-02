@@ -9,10 +9,10 @@
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="389dp"
+        android:layout_height="385dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="130dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="220dp"
         android:background="@drawable/question"
@@ -42,12 +42,14 @@
             android:inputType="textPersonName" />
 
         <Button
-            android:id="@+id/button"
-            android:layout_width="116dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="84dp"
-            android:layout_marginEnd="168dp"
-            android:text="Button" />
+            android:id="@+id/btn_chick"
+            android:layout_width="250dp"
+            android:layout_height="61dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#CD6FDD"
+            android:text="Check your answer"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

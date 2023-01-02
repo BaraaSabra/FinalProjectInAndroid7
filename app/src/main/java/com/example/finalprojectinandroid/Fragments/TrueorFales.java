@@ -1,7 +1,9 @@
 package com.example.finalprojectinandroid.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -20,12 +22,21 @@ public class TrueorFales extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_QUESTION= "Question";
-    private static final String ARG_TRUEANSWER = "TrueAnswer";
+    private static final String ARG_QUESTION = "Question";
+    private static final String ARG_TRUEANSWER = "trueAnswer";
+    OnAnswer answer;
+
+
 
     // TODO: Rename and change types of parameters
     private String Question;
     private String TrueAnswer;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        answer=(OnAnswer) getContext();
+    }
 
     public TrueorFales() {
         // Required empty public constructor
@@ -46,7 +57,7 @@ public class TrueorFales extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             Question = getArguments().getString(ARG_QUESTION);
-            TrueAnswer = getArguments().getString(TrueAnswer);
+            TrueAnswer = getArguments().getString(ARG_TRUEANSWER);
         }
 
     }
@@ -55,10 +66,24 @@ public class TrueorFales extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        FragmentTrueorFalesBinding binding=FragmentTrueorFalesBinding.inflate(getLayoutInflater());
+        FragmentTrueorFalesBinding binding = FragmentTrueorFalesBinding.inflate(getLayoutInflater());
         binding.Question.setText(Question);
-        return binding.getRoot();
 
+        binding.btnChick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (binding.redTrue.isChecked()){
+                    answer.ChecktheAnswer(TrueAnswer,binding.redTrue.getText().toString(),1);
+
+                } else if (binding.rabFules.isChecked()) {
+                    answer.ChecktheAnswer(TrueAnswer,binding.rabFules.getText().toString(),1);
+                }
+
+            }
+        });
+
+
+        return binding.getRoot();
 
     }
 
