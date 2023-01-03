@@ -30,8 +30,8 @@ import java.util.List;
 
 public class LevelActivity extends AppCompatActivity {
     ActivityLevelBinding binding;
-    SharedPreferences sp= getSharedPreferences("Playe",MODE_PRIVATE) ;//الملف الافتراضي للمشروع باكمله
-    SharedPreferences.Editor edit=sp.edit();
+//    SharedPreferences sp= getSharedPreferences("Playe",MODE_PRIVATE) ;//الملف الافتراضي للمشروع باكمله
+//    SharedPreferences.Editor edit=sp.edit();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

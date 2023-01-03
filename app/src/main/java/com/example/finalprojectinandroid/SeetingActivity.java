@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
@@ -20,17 +21,19 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.example.finalprojectinandroid.RoomDataBase.ViewModel;
 import com.example.finalprojectinandroid.databinding.ActivitySeetingBinding;
 
 public class SeetingActivity extends AppCompatActivity {
     ActivitySeetingBinding binding;
     Boolean isplaying = false;
-
+    ViewModel viewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivitySeetingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+      viewModel  =new ViewModelProvider(this).get(ViewModel.class);
 
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,6 +84,13 @@ public class SeetingActivity extends AppCompatActivity {
 
 
 
+            }
+        });
+
+        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//             viewModel.deleteUsers();
             }
         });
 

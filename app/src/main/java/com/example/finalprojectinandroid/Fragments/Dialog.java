@@ -29,11 +29,14 @@ public class Dialog extends DialogFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param1";
+    private static final String ARG_HINT = "Hint";
 
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String hint;
+
 
 
     public Dialog() {
@@ -43,10 +46,12 @@ public class Dialog extends DialogFragment {
 
 
     // TODO: Rename and change types and number of parameters
-    public static Dialog newInstance(String Messige) {
+    public static Dialog newInstance(String hint) {
         Dialog fragment = new Dialog();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, Messige);
+        args.putString(ARG_HINT, hint);
+
+
 
         fragment.setArguments(args);
         return fragment;
@@ -64,6 +69,7 @@ public class Dialog extends DialogFragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
+            hint = getArguments().getString(ARG_HINT);
         }
     }
 
@@ -73,7 +79,7 @@ public class Dialog extends DialogFragment {
         // Inflate the layout for this fragment
         FragmentDialogBinding binding=FragmentDialogBinding.inflate(inflater,container,false);
 
-        binding.messige.setText("The true answer is: "+mParam1);
+        binding.messige.setText("The true answer is: "+hint);
         binding.button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

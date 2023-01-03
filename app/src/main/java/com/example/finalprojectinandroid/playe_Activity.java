@@ -40,8 +40,8 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
     int counter = 0;
     int timer;
     int AllTheQuestion=0;
-    SharedPreferences sp= getSharedPreferences("Playe",MODE_PRIVATE) ;//الملف الافتراضي للمشروع باكمله
-    SharedPreferences.Editor edit=sp.edit();
+//    SharedPreferences sp= getSharedPreferences("Playe",MODE_PRIVATE) ;//الملف الافتراضي للمشروع باكمله
+//    SharedPreferences.Editor edit=sp.edit();
 
 
     @Override
@@ -49,13 +49,15 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
         super.onCreate(savedInstanceState);
         binding = ActivityPlayeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        binding.ViewPager.setUserInputEnabled(false);
 
-        Timer();
 
         binding.btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 binding.ViewPager.setCurrentItem(binding.ViewPager.getCurrentItem() + 1);
+                counter=counter-3;
+                binding.point.setText(String.valueOf(counter));
 
             }
         });
@@ -70,16 +72,16 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
             public void onChanged(List<PuzzleData> puzzleData) {
                 for (int i = 0; i < puzzleData.size(); i++) {
                     if (puzzleData.get(i).getPattern_id() == (1) && puzzleData.get(i).getLevelnum() == getIntent().getIntExtra("LevelNum", 0)) {
-                        TrueorFales trueorFales = TrueorFales.newInstance(puzzleData.get(i).getPuzzle_text(), puzzleData.get(i).getTrue_answer());
+                        TrueorFales trueorFales = TrueorFales.newInstance(puzzleData.get(i).getPuzzle_text(), puzzleData.get(i).getTrue_answer(),puzzleData.get(i).getHint(),puzzleData.get(i).getDuration());
                         Log.d("answer", puzzleData.get(i).getTrue_answer());
                         fragmentArrayList.add(trueorFales);
                    AllTheQuestion= AllTheQuestion + 1;
                     } else if (puzzleData.get(i).getPattern_id() == (2) && puzzleData.get(i).getLevelnum() == getIntent().getIntExtra("LevelNum", 0)) {
-                        ChooseFragment chooseFragment = ChooseFragment.newInstance(puzzleData.get(i).getPuzzle_text(), puzzleData.get(i).getAnswer_1(), puzzleData.get(i).getAnswer_2(), puzzleData.get(i).getAnswer_3(), puzzleData.get(i).getAnswer_4(), puzzleData.get(i).getTrue_answer());
+                        ChooseFragment chooseFragment = ChooseFragment.newInstance(puzzleData.get(i).getPuzzle_text(), puzzleData.get(i).getAnswer_1(), puzzleData.get(i).getAnswer_2(), puzzleData.get(i).getAnswer_3(), puzzleData.get(i).getAnswer_4(), puzzleData.get(i).getTrue_answer(),puzzleData.get(i).getHint());
                         fragmentArrayList.add(chooseFragment);
                         AllTheQuestion= AllTheQuestion + 1;
                     } else if (puzzleData.get(i).getPattern_id() == (3) && puzzleData.get(i).getLevelnum() == getIntent().getIntExtra("LevelNum", 0)) {
-                        FullTheBlank fullTheBlank = FullTheBlank.newInstance(puzzleData.get(i).getPuzzle_text(), puzzleData.get(i).getTrue_answer());
+                        FullTheBlank fullTheBlank = FullTheBlank.newInstance(puzzleData.get(i).getPuzzle_text(), puzzleData.get(i).getTrue_answer(),puzzleData.get(i).getHint());
                         fragmentArrayList.add(fullTheBlank);
                         AllTheQuestion= AllTheQuestion + 1;
                     }
@@ -98,19 +100,7 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
 
     }
 
-    private void Timer() {
 
-            new CountDownTimer(30000, 1000) {
-                public void onTick(long millisUntilFinished) {
-                    binding.timer.setText(String.valueOf(timer));
-                    timer++;
-                }
-
-                public void onFinish() {
-                    binding.timer.setText("FINISH!!");
-                }
-            }.start();
-    }
 
 
     private void Jison() {
@@ -155,7 +145,7 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
     }
 
     @Override
-    public void ChecktheAnswer(String TrueAnsewr, String UserAnswer, int pattern) {
+    public void ChecktheAnswer(String TrueAnsewr, String UserAnswer, int pattern,String Hint) {
         MediaPlayer mediaPlayer_fales = MediaPlayer.create(this, R.raw.fals);
         MediaPlayer mediaPlayer_true = MediaPlayer.create(this, R.raw.tru);
 
@@ -169,7 +159,7 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
                 binding.ViewPager.setCurrentItem(binding.ViewPager.getCurrentItem() + 1);
 
             } else {
-                Dialog dialog = Dialog.newInstance(TrueAnsewr);
+                Dialog dialog = Dialog.newInstance(Hint);
                 dialog.show(getSupportFragmentManager(), null);
                 mediaPlayer_fales.start();
                 binding.ViewPager.setCurrentItem(binding.ViewPager.getCurrentItem() + 1);
@@ -183,7 +173,7 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
                 mediaPlayer_true.start();
                 binding.ViewPager.setCurrentItem(binding.ViewPager.getCurrentItem() + 1);
             } else {
-                Dialog dialog = Dialog.newInstance(TrueAnsewr);
+                Dialog dialog = Dialog.newInstance(Hint);
                 dialog.show(getSupportFragmentManager(), null);
                 mediaPlayer_fales.start();
                 binding.ViewPager.setCurrentItem(binding.ViewPager.getCurrentItem() + 1);
@@ -198,14 +188,14 @@ public class playe_Activity extends AppCompatActivity implements OnAnswer {
                 mediaPlayer_true.start();
                 binding.ViewPager.setCurrentItem(binding.ViewPager.getCurrentItem() + 1);
             } else {
-                Dialog dialog = Dialog.newInstance(TrueAnsewr);
+                Dialog dialog = Dialog.newInstance(Hint);
                 dialog.show(getSupportFragmentManager(), null);
                 mediaPlayer_fales.start();
                 binding.ViewPager.setCurrentItem(binding.ViewPager.getCurrentItem() + 1);
             }
         }
-        edit.putString("counter",String.valueOf(counter));
-        edit.apply();
+//        edit.putString("counter",String.valueOf(counter));
+//        edit.apply();
 
     }
 

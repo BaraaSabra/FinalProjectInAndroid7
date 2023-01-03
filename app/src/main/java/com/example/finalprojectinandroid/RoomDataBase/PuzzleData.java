@@ -124,6 +124,14 @@ public class PuzzleData {
         return duration;
     }
 
+    public String getHint() {
+        return hint;
+    }
+
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+
     public void setDuration(int duration) {
         this.duration = duration;
     }

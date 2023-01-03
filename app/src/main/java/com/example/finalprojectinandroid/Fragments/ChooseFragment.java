@@ -30,6 +30,7 @@ public class ChooseFragment extends Fragment {
     private static final String ARG_ANSWER3 = "answer3";
     private static final String ARG_ANSWER4 = "answer4";
     private static final String ARG_TREUEANSWER = "trueAnswer";
+    private static final String ARG_HINT = "hint";
     OnAnswer answer;
 
 
@@ -47,6 +48,7 @@ public class ChooseFragment extends Fragment {
     private String answer3;
     private String answer4;
     private String trueAnswer;
+    private String hint;
 
     public ChooseFragment() {
         // Required empty public constructor
@@ -54,7 +56,7 @@ public class ChooseFragment extends Fragment {
 
 
     // TODO: Rename and change types and number of parameters
-    public static ChooseFragment newInstance(String Question, String Answer1, String Answer2, String Answer3, String Answer4, String TrueAnswer) {
+    public static ChooseFragment newInstance(String Question, String Answer1, String Answer2, String Answer3, String Answer4, String TrueAnswer,String hint) {
         ChooseFragment fragment = new ChooseFragment();
         Bundle args = new Bundle();
         args.putString(ARG_QUESTION, Question);
@@ -63,6 +65,7 @@ public class ChooseFragment extends Fragment {
         args.putString(ARG_ANSWER3, Answer3);
         args.putString(ARG_ANSWER4, Answer4);
         args.putString(ARG_TREUEANSWER, TrueAnswer);
+        args.putString(ARG_HINT, hint);
         fragment.setArguments(args);
         return fragment;
     }
@@ -77,6 +80,7 @@ public class ChooseFragment extends Fragment {
             answer3 = getArguments().getString(ARG_ANSWER3);
             answer4 = getArguments().getString(ARG_ANSWER4);
             trueAnswer = getArguments().getString(ARG_TREUEANSWER);
+            hint = getArguments().getString(ARG_HINT);
         }
 
     }
@@ -98,17 +102,17 @@ public class ChooseFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (binding.red1Answer1.isChecked()) {
-                    answer.ChecktheAnswer(trueAnswer,binding.red1Answer1.getText().toString(),2);
+                    answer.ChecktheAnswer(trueAnswer,binding.red1Answer1.getText().toString(),2,hint);
 
 
                 } else if (binding.rabAnswer2.isChecked()) {
-                    answer.ChecktheAnswer(trueAnswer,binding.rabAnswer2.getText().toString(),2);
+                    answer.ChecktheAnswer(trueAnswer,binding.rabAnswer2.getText().toString(),2,hint);
 
                 } else if (binding.answer3.isChecked()) {
-                    answer.ChecktheAnswer(trueAnswer,binding.answer3.getText().toString(),2);
+                    answer.ChecktheAnswer(trueAnswer,binding.answer3.getText().toString(),2,hint);
 
                 } else if (binding.answer4.isChecked()) {
-                    answer.ChecktheAnswer(trueAnswer, binding.answer4.getText().toString(), 2);
+                    answer.ChecktheAnswer(trueAnswer, binding.answer4.getText().toString(), 2,hint);
                 }
 
             }

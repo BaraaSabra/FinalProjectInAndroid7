@@ -25,9 +25,11 @@ public class DailogTrue extends DialogFragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String Hhint;
 
     public DailogTrue() {
         // Required empty public constructor
@@ -53,6 +55,8 @@ public class DailogTrue extends DialogFragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
+
         }
     }
 
